@@ -15,8 +15,8 @@ cols_to_scale = model_data['cols_to_scale']
 
 
 def prepare_input(age, income, loan_amount, loan_tenure_months, avg_dpd_per_delinquency,
-                    delinquency_ratio, credit_utilization_ratio, num_open_accounts, residence_type,
-                    loan_purpose, loan_type):
+                  delinquency_ratio, credit_utilization_ratio, num_open_accounts, residence_type,
+                  loan_purpose, loan_type):
     # Create a dictionary with input values and dummy values for missing features
     input_data = {
         'age': age,
@@ -32,7 +32,7 @@ def prepare_input(age, income, loan_amount, loan_tenure_months, avg_dpd_per_deli
         'loan_purpose_Home': 1 if loan_purpose == 'Home' else 0,
         'loan_purpose_Personal': 1 if loan_purpose == 'Personal' else 0,
         'loan_type_Unsecured': 1 if loan_type == 'Unsecured' else 0,
-        # additional dummy fields just for scaling purpose
+        # Additional dummy fields just for scaling purpose
         'number_of_dependants': 1,  # Dummy value
         'years_at_current_address': 1,  # Dummy value
         'zipcode': 1,  # Dummy value
@@ -93,7 +93,7 @@ def calculate_credit_score(input_df, base_score=300, scale_length=600):
         elif 750 <= score <= 900:
             return 'Excellent'
         else:
-            return 'Undefined'  # in case of any unexpected score
+            return 'Undefined'  # In case of any unexpected score
 
     rating = get_rating(credit_score[0])
 
